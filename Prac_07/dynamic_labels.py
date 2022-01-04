@@ -4,8 +4,8 @@ from kivy.uix.button import Button
 from kivy.properties import StringProperty
 
 
-class DynamicWidgetsApp(App):
-    """Main program - Kivy app to demo dynamic widget creation."""
+class DynamiclabelsApp(App):
+    """Main program - Kivy app to demo dynamic labels creation."""
     status_text = StringProperty()
 
     def __init__(self, **kwargs):
@@ -17,19 +17,19 @@ class DynamicWidgetsApp(App):
 
     def build(self):
         """Build the Kivy GUI."""
-        self.title = "Dynamic Widgets"
-        self.root = Builder.load_file('dynamic_widgets.kv')
-        self.create_widgets()
+        self.title = "Dynamic labels"
+        self.root = Builder.load_file('dynamic_labels.kv')
+        self.create_labels()
         return self.root
 
-    def create_widgets(self):
+    def create_labels(self):
         """Create buttons from dictionary entries and add them to the GUI."""
         for name in self.name_to_phone:
             # create a button for each data entry, specifying the text and id
             # (although text and id are the same in this case, you should see how this works)
             temp_button = Button(text=name)
             temp_button.bind(on_release=self.press_entry)
-            # add the button to the "entries_box" layout widget
+            # add the button to the "entries_box" layout labels
             self.root.ids.entries_box.add_widget(temp_button)
 
     def press_entry(self, instance):
@@ -43,8 +43,8 @@ class DynamicWidgetsApp(App):
         self.status_text = "{}'s number is {}".format(name, self.name_to_phone[name])
 
     def clear_all(self):
-        """Clear all of the widgets that are children of the "entries_box" layout widget."""
+        """Clear all of the lebels that are children of the "entries_box" layout labels."""
         self.root.ids.entries_box.clear_widgets()
 
 
-DynamicWidgetsApp().run()
+DynamiclabelsApp().run()
